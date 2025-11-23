@@ -70,11 +70,25 @@ const config = {
           900: "#101828",
         },
       },
+      fontSize: {
+        10: ["10px", "14px"],
+        12: ["12px", "16px"],
+        14: ["14px", "20px"],
+        16: ["16px", "24px"],
+        18: ["18px", "22px"],
+        20: ["20px", "24px"],
+        24: ["24px", "30px"],
+        26: ["26px", "32px"],
+        30: ["30px", "38px"],
+        36: ["36px", "44px"],
+      },
+      borderRadius: {
+        20: "20px",
+      },
       backgroundImage: {
         "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
         "gradient-mesh": "url('/icons/gradient-mesh.svg')",
-        "bank-green-gradient":
-          "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        "bank-green-gradient": "linear-gradient(90deg, #01797A 0%, #489399 100%)",
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
