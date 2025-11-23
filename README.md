@@ -37,3 +37,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 installed packages:
 -react-countup - https://www.npmjs.com/package/react-countup#usage
 -chart.js - https://www.chartjs.org/
+-react-chartjs-2 - https://www.npmjs.com/package/react-chartjs-2
