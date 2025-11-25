@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
@@ -16,6 +18,23 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
                         </p>
                     </div>
                 </div>
+            </section>
+            <section className="banks">
+                <div className="flex w-full justify-between">
+                    <h2 className='header-2'>
+                        My Banks
+                    </h2>
+                    <Link href='/' className='flex gap-2'>
+                    <Image
+                    src='/icons/plus.svg'
+                    alt='plus'
+                    width={20}
+                    height={20}
+                    />
+                    <h2 className="text-14 font-semibold"></h2>
+                    </Link>
+                </div>
+
             </section>
         </aside>
     )
