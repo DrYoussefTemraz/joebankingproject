@@ -39,3 +39,6 @@ installed packages:
 -chart.js - https://www.chartjs.org/
 -react-chartjs-2 - https://www.npmjs.com/package/react-chartjs-2
 -shadcn sheet component for the mobile navbar - https://ui.shadcn.com/docs/components/sheet
+-shadcn form component - https://ui.shadcn.com/docs/components/form
+-shadcn input component - https://ui.shadcn.com/docs/components/input
+-shadcn button component - https://ui.shadcn.com/docs/components/button
