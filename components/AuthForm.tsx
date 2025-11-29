@@ -27,6 +27,7 @@ import { Divide } from 'lucide-react'
 
 const formSchema = z.object({
     email: z.email(),
+    password : z.string().min(6, "Password must be at least 6 characters long")
 })
 
 
@@ -41,6 +42,7 @@ const AuthForm = ({ type }: { type: string }) => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
+            password: "",
         },
     })
 
@@ -115,11 +117,37 @@ const AuthForm = ({ type }: { type: string }) => {
                                                         {...field}
                                                     />
                                                 </FormControl>
-                                                <FormMessage className='form-message mt-2'/>
+                                                <FormMessage className='form-message mt-2' />
                                             </div>
                                         </div>
                                     )}
                                 />
+
+
+                                <FormField
+                                    control={form.control}
+                                    name="password"
+                                    render={({ field }) => (
+                                        <div className='form-item'>
+                                            <FormLabel className='form-label'>
+                                                password
+                                            </FormLabel>
+                                            <div className='flex flex-col w-full'>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Enter your password"
+                                                        className='input-class'
+                                                        {...field}
+                                                        type='password'
+                                                    />
+                                                </FormControl>
+                                                <FormMessage className='form-message mt-2' />
+                                            </div>
+                                        </div>
+                                    )}
+                                />
+
+
                                 <Button type="submit">Submit</Button>
                             </form>
                         </Form>
