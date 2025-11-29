@@ -22,7 +22,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Divide } from 'lucide-react'
+import { Divide, Loader2 } from 'lucide-react'
 import CustomInput from './CustomInput'
 import { AuthformSchema } from '@/lib/utils'
 
@@ -35,6 +35,7 @@ import { AuthformSchema } from '@/lib/utils'
 
 const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof AuthformSchema>>({
@@ -49,7 +50,9 @@ const AuthForm = ({ type }: { type: string }) => {
     function onSubmit(values: z.infer<typeof AuthformSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        setIsLoading(true)
         console.log(values)
+        setIsLoading(false)
     }
 
 
@@ -115,7 +118,22 @@ const AuthForm = ({ type }: { type: string }) => {
                                     placeholder="Enter your password"
 
                                 />
-                                <Button type="submit" className='form-btn'>Submit</Button>
+                                <Button type="submit" className='form-btn' disabled = {isLoading}>
+
+                                    {isLoading
+                                        ? (
+                                            <>
+                                                <Loader2 size={20} className='animate-spin' /> &nbsp; 
+                                                Loading... 
+                                            </>
+                                        )
+                                        : type === 'sign-in'
+                                        ? 'Sign in'
+                                        : 'Sign Up'
+                                        
+                                    }
+
+                                </Button>
                             </form>
                         </Form>
                     </>
