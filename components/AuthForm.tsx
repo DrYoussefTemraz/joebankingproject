@@ -115,7 +115,7 @@ const AuthForm = ({ type }: { type: string }) => {
                                     placeholder="Enter your password"
 
                                 />
-                                <Button type="submit">Submit</Button>
+                                <Button type="submit" className='form-btn'>Submit</Button>
                             </form>
                         </Form>
                     </>
