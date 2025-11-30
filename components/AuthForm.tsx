@@ -118,24 +118,47 @@ const AuthForm = ({ type }: { type: string }) => {
                                     placeholder="Enter your password"
 
                                 />
-                                <Button type="submit" className='form-btn' disabled = {isLoading}>
+                                <div className='flex flex-col gap-4'>
+                                    <Button type="submit" className='form-btn' disabled={isLoading}>
 
-                                    {isLoading
-                                        ? (
-                                            <>
-                                                <Loader2 size={20} className='animate-spin' /> &nbsp; 
-                                                Loading... 
-                                            </>
-                                        )
-                                        : type === 'sign-in'
-                                        ? 'Sign in'
-                                        : 'Sign Up'
-                                        
-                                    }
+                                        {isLoading
+                                            ? (
+                                                <>
+                                                    <Loader2 size={20} className='animate-spin' /> &nbsp;
+                                                    Loading...
+                                                </>
+                                            )
+                                            : type === 'sign-in'
+                                                ? 'Sign in'
+                                                : 'Sign Up'
 
-                                </Button>
+                                        }
+
+                                    </Button>
+                                </div>
+
+                                
                             </form>
                         </Form>
+                        <footer className='flex justify-center gap-1'>
+                            <p className='text-14 font-normal text-gray-600'>
+                                {type === 'sign-in'
+                                    ? 'Don\'t have an account?'
+                                    : 'Already have an account?'
+                                }
+                            </p>
+                            <Link href={type === 'sign-in'
+                                ? '/sign-up'
+                                : '/sign-in'
+                            }
+                                className='form-link'>
+                                {type === 'sign-in'
+                                    ? 'sign-in'
+                                    : 'sign-up'
+                                }
+                            </Link>
+
+                        </footer>
                     </>
                 )
             }
