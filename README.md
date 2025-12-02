@@ -42,3 +42,10 @@ installed packages:
 -shadcn form component - https://ui.shadcn.com/docs/components/form
 -shadcn input component - https://ui.shadcn.com/docs/components/input
 -shadcn button component - https://ui.shadcn.com/docs/components/button
+
+- burilding database and api using appwrite 
+fully supported ssr with the appwrite 
+https://appwrite.io/docs/products/auth/server-side-rendering
+
+Server-side authentication with Next.js "8 steps"
+https://appwrite.io/docs/tutorials/nextjs-ssr-auth/step-1
