@@ -27,12 +27,6 @@ import CustomInput from './CustomInput'
 import { AuthformSchema } from '@/lib/utils'
 
 
-
-
-
-
-
-
 const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -54,8 +48,6 @@ const AuthForm = ({ type }: { type: string }) => {
         console.log(values)
         setIsLoading(false)
     }
-
-
 
 
     return (
@@ -103,7 +95,52 @@ const AuthForm = ({ type }: { type: string }) => {
                     <>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                {type === 'sign-up' &&
+                                    <>
+                                        <CustomInput
+                                            control={form.control}
+                                            name='firstName'
+                                            label='First Name'
+                                            placeholder='Enter your First Name' />
 
+                                             <CustomInput
+                                            control={form.control}
+                                            name='last Name'
+                                            label='Last Name'
+                                            placeholder='Enter your Last Name' />
+
+                                             <CustomInput
+                                            control={form.control}
+                                            name='address1'
+                                            label='Address'
+                                            placeholder='Enter your Address' />
+
+                                             <CustomInput
+                                            control={form.control}
+                                            name='state'
+                                            label='State'
+                                            placeholder='State Ex. NY' />
+
+                                             <CustomInput
+                                            control={form.control}
+                                            name='postalCode'
+                                            label='Postal Code'
+                                            placeholder='Ex. 11101' />
+
+                                             <CustomInput
+                                            control={form.control}
+                                            name='dateOfBirth'
+                                            label='Date of Birth'
+                                            placeholder='yyyy-mm-dd' />
+
+                                             <CustomInput
+                                            control={form.control}
+                                            name='ssn'
+                                            label='SSN'
+                                            placeholder='Enter your SSN' />
+                                    </>
+
+                                }
                                 <CustomInput
                                     control={form.control}
                                     name="email"
@@ -137,7 +174,7 @@ const AuthForm = ({ type }: { type: string }) => {
                                     </Button>
                                 </div>
 
-                                
+
                             </form>
                         </Form>
                         <footer className='flex justify-center gap-1'>
@@ -153,8 +190,8 @@ const AuthForm = ({ type }: { type: string }) => {
                             }
                                 className='form-link'>
                                 {type === 'sign-in'
-                                    ? 'sign-in'
-                                    : 'sign-up'
+                                    ? 'sign-up'
+                                    : 'sign-in'
                                 }
                             </Link>
 

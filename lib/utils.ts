@@ -196,5 +196,7 @@ export const getTransactionStatus = (date: Date) => {
 };
 export const AuthformSchema = z.object({
     email: z.email(),
-    password: z.string().min(8, "Password must be at least 8 characters long")
+    password: z.string().min(8, "Password must be at least 8 characters long"),
+    firstName: z.string().min(2, "First name must be at least 2 characters long"),
+    lastName: z.string().min(2, "Last name must be at least 2 characters long"),
 })
