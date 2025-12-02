@@ -23,13 +23,13 @@ import {
 } from "@/components/ui/form"
 import { Loader2 } from 'lucide-react'
 import CustomInput from './CustomInput'
-import { AuthformSchema } from '@/lib/utils'
+import { authFormSchema } from '@/lib/utils'
 
 
 const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    const formSchema = AuthformSchema(type)
+    const formSchema = authFormSchema(type)
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
@@ -37,13 +37,17 @@ const AuthForm = ({ type }: { type: string }) => {
         defaultValues: {
             email: "",
             password: "",
-            firstName: "",
-            lastName: "",
-            address1: "",
-            state: "",
-            postalCode: "",
-            dateOfBirth: "",
-            ssn: ""
+            // Add these default values for sign-up fields
+            ...(type === 'sign-up' ? {
+                firstName: "",
+                lastName: "",
+                address1: "",
+                city: "",
+                state: "",
+                postalCode: "",
+                dateOfBirth: "",
+                ssn: ""
+            } : {})
         },
     })
 
