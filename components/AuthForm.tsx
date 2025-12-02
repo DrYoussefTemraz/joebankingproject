@@ -21,8 +21,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Divide, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import CustomInput from './CustomInput'
 import { AuthformSchema } from '@/lib/utils'
 
@@ -30,18 +29,26 @@ import { AuthformSchema } from '@/lib/utils'
 const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const formSchema = AuthformSchema(type)
 
     // 1. Define your form.
-    const form = useForm<z.infer<typeof AuthformSchema>>({
-        resolver: zodResolver(AuthformSchema),
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
             password: "",
+            firstName: "",
+            lastName: "",
+            address1: "",
+            state: "",
+            postalCode: "",
+            dateOfBirth: "",
+            ssn: ""
         },
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof AuthformSchema>) {
+    function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         setIsLoading(true)
@@ -103,37 +110,37 @@ const AuthForm = ({ type }: { type: string }) => {
                                             label='First Name'
                                             placeholder='Enter your First Name' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
-                                            name='last Name'
+                                            name='lastName'
                                             label='Last Name'
                                             placeholder='Enter your Last Name' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
                                             name='address1'
                                             label='Address'
                                             placeholder='Enter your Address' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
                                             name='state'
                                             label='State'
                                             placeholder='State Ex. NY' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
                                             name='postalCode'
                                             label='Postal Code'
                                             placeholder='Ex. 11101' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
                                             name='dateOfBirth'
                                             label='Date of Birth'
                                             placeholder='yyyy-mm-dd' />
 
-                                             <CustomInput
+                                        <CustomInput
                                             control={form.control}
                                             name='ssn'
                                             label='SSN'
