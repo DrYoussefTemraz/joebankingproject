@@ -25,6 +25,8 @@ import { Loader2 } from 'lucide-react'
 import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import { signIn, signUp } from '@/lib/actions/user.actions'
+
 
 
 const AuthForm = ({ type }: { type: string }) => {
@@ -60,12 +62,11 @@ const AuthForm = ({ type }: { type: string }) => {
         try {
             // sign up with Appwrite
             if (type === 'sign-up') {
-                // const { firstName, lastName, email, password, address1, city, state, postalCode, dateOfBirth, ssn } = data
-                // const newUser = await SignUp(data)
-                // setUser(newUser)
+                const newUser = await signUp(data)
+                setUser(newUser)
             }
             if (type === 'sign-in') {
-                // const response = await SignIn({
+                // const response = await signIn({
                 //     email: data.email,
                 //     password: data.password
                 // })
