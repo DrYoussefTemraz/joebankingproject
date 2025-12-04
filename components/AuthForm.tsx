@@ -29,9 +29,11 @@ import { signIn, signUp } from '@/lib/actions/user.actions'
 
 
 
+
 const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
     const formSchema = authFormSchema(type)
     const router = useRouter();
 
@@ -58,9 +60,8 @@ const AuthForm = ({ type }: { type: string }) => {
     // 2. Define a submit handler.
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
         setIsLoading(true)
-        // submit the form asyncronously
+        setError(null)
         try {
-            // sign up with Appwrite
             if (type === 'sign-up') {
                 const newUser = await signUp(data)
                 setUser(newUser)
@@ -71,14 +72,12 @@ const AuthForm = ({ type }: { type: string }) => {
                 //     password: data.password
                 // })
                 // if (response) {
-
                 //     router.push('/')
                 // }
             }
-
-        } catch (error) {
-            console.error(Error, error)
-
+        } catch (error: any) {
+            console.error('Auth error:', error)
+            setError(error.message || 'Something went wrong. Please try again.')
         } finally {
             setIsLoading(false)
         }

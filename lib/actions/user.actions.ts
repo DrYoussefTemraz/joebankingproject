@@ -27,11 +27,11 @@ export const signUp = async (userData: SignUpParams) => {
             password,
             `${firstName} ${lastName}`
         );
+        
         const session = await account.createEmailPasswordSession({
             email,
             password
         });
-
 
         const cookieStore = await cookies();
         cookieStore.set("appwrite-session", session.secret, {
@@ -42,8 +42,9 @@ export const signUp = async (userData: SignUpParams) => {
         });
         return parseStringify(newUserAccount)
     } catch (error) {
-        console.error('Error signing in:', error)
-
+        console.error('Error signing up:', error)
+        // Rethrow the error to be handled by the component
+        throw error;
     }
 
 }
@@ -53,7 +54,8 @@ export const signUp = async (userData: SignUpParams) => {
 export async function getLoggedInUser() {
     try {
         const { account } = await createSessionClient();
-        return await account.get();
+       const user = await account.get();
+        return parseStringify(user)
     } catch (error) {
         return null;
     }
