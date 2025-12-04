@@ -5,9 +5,11 @@ import { createAdminClient, createSessionClient } from "./Appwrite";
 import { cookies } from "next/headers";
 import { parseStringify } from "../utils";
 
-export const signIn = async (email: string, password: string) => {
+export const signIn = async ({email, password}:signInProps) => {
     try {
-        // mutation / database / fetch 
+        const { account } = await createAdminClient();
+        const response = account.createEmailPasswordSession(email, password) 
+        return parseStringify(response)
 
     } catch (error) {
         console.error('Error signing in:', error)
