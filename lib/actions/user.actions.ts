@@ -5,10 +5,13 @@ import { createAdminClient, createSessionClient } from "./Appwrite";
 import { cookies } from "next/headers";
 import { parseStringify } from "../utils";
 
-export const signIn = async ({email, password}:signInProps) => {
+export const signIn = async ({ email, password }: signInProps) => {
     try {
         const { account } = await createAdminClient();
-        const response = account.createEmailPasswordSession(email, password) 
+        const response = await account.createEmailPasswordSession({
+            email,
+            password
+        })
         return parseStringify(response)
 
     } catch (error) {
@@ -23,20 +26,20 @@ export const signUp = async (userData: SignUpParams) => {
     try {
         const { account } = await createAdminClient();
 
-        const newUserAccount = await account.create(
-            ID.unique(),
+        const newUserAccount = await account.create({
+            userId: ID.unique(),
             email,
             password,
-            `${firstName} ${lastName}`
-        );
-        
+            name: `${firstName} ${lastName}`
+        });
+
         const session = await account.createEmailPasswordSession({
             email,
             password
         });
 
         const cookieStore = await cookies();
-        cookieStore.set("appwrite-session", session.secret, {
+        cookieStore.set("appwrite-session", session['$id'], {
             path: "/",
             httpOnly: true,
             sameSite: "strict",
@@ -56,7 +59,7 @@ export const signUp = async (userData: SignUpParams) => {
 export async function getLoggedInUser() {
     try {
         const { account } = await createSessionClient();
-       const user = await account.get();
+        const user = await account.get();
         return parseStringify(user)
     } catch (error) {
         return null;
