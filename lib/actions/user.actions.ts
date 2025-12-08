@@ -39,7 +39,7 @@ export const signUp = async (userData: SignUpParams) => {
         });
 
         const cookieStore = await cookies();
-        cookieStore.set("appwrite-session", session['$id'], {
+        cookieStore.set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
             sameSite: "strict",
