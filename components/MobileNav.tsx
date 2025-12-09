@@ -31,6 +31,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     />
                 </SheetTrigger>
                 <SheetContent side="left" className="border-none bg-white">
+                    <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
                     <Link href='/' className='flex cursor-pointer items-center gap-1 px-4'>
                         <Image
                             src='/icons/logo.svg'
@@ -70,7 +71,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                                 USER
                             </nav>
                         </SheetClose>
-                       <Footer user= {user} type = 'mobile'/>
+                        <Footer user={user} type='mobile' />
                     </div>
 
                 </SheetContent>

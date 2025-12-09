@@ -17,7 +17,7 @@ export const signIn = async ({ email, password }: signInProps) => {
         cookieStore.set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "strict",
             secure: true,
         });
 
@@ -51,19 +51,17 @@ export const signUp = async (userData: SignUpParams) => {
         cookieStore.set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "strict",
             secure: true,
         });
         return parseStringify(newUserAccount)
     } catch (error) {
         console.error('Error signing up:', error)
-        // Rethrow the error to be handled by the component
         throw error;
     }
 
 }
 
-// ... your initilization functions
 
 export async function getLoggedInUser() {
     try {
