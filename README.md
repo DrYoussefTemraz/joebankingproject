@@ -49,3 +49,9 @@ https://appwrite.io/docs/products/auth/server-side-rendering
 
 Server-side authentication with Next.js "8 steps"
 https://appwrite.io/docs/tutorials/nextjs-ssr-auth/step-1
+
+bugs clarification using sentry
+https://youssef-wm.sentry.io/insights/projects/banking-nextjs/?project=4510504877621248
+
+implementing banking functionality using plaid
+plaid docs: https://plaid.com/docs
